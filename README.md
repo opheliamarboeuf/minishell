@@ -3,8 +3,8 @@
 A POSIX-compliant Unix shell implementation written in C, as part of the 42 School curriculum.
 
 > Authors: 
-- Charlotte Hénique — charlotte.1.hq@gmail.com — github.com/chheniqu
-- Ophelia Marboeuf — m.opheliaa@gmail.com — github.com/opheliamarboeuf
+> - Charlotte Hénique — [github.com/chheniqu](https://github.com/chheniqu) — [charlotte.1.hq@gmail.com](mailto:charlotte.1.hq@gmail.com)
+> - Ophélia Marbœuf — [github.com/opheliamarboeuf](https://github.com/opheliamarboeuf) — [m.opheliaa@gmail.com](mailto:m.opheliaa@gmail.com)
 
 ---
 
@@ -12,11 +12,10 @@ A POSIX-compliant Unix shell implementation written in C, as part of the 42 Scho
 
 - [Overview](#overview)
 - [Features](#features)
-- [Architecture](#architecture)
+- [Architecture](#architectuautre)
 - [Built-in Commands](#built-in-commands)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Implementation Details](#implementation-details)
 
 ---
 
@@ -37,6 +36,7 @@ Minishell recreates the core behaviour of a Unix shell — reading user input, t
 - Signal handling (`Ctrl-C`, `Ctrl-D`, `Ctrl-\`, `Ctrl-Z`)
 - Built-in commands
 - Exit status propagation (`$?`) matching bash behaviour
+- Exit status propagation (`$?`) matching bash behaviour
 - Exit codes:
   - `0` — Success
   - `1` — General error
@@ -45,7 +45,7 @@ Minishell recreates the core behaviour of a Unix shell — reading user input, t
   - `127` — Command not found
   - `130` — Interrupted by `Ctrl-C` (readline or heredoc)
   - `131` — Quit by `Ctrl-\`
-  - `128 + n` — Process terminated by signal `n` (e.g., 130 for SIGINT, 131 for SIGQUIT)
+  - `128 + n` — Process terminated by signal `n`
 
 ---
 
@@ -56,7 +56,7 @@ The shell processes each input line through five sequential phases:
 ```
 readline input
     │
-    ├─ tokenize()          → t_token linked list (with quote tracking per character)
+    ├─ tokenize()          → t_token linked list (with per-character quote array)
     ├─ check_quotes()      → unclosed quote validation
     ├─ has_syntax_error()  → token-level syntax validation
     ├─ expand_variable()   → $VAR / $? substitution (quote-aware)
